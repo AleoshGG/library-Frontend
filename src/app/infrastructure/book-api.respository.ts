@@ -12,6 +12,22 @@ export class BookApiRepository implements BookRepository {
 
   constructor(private http: HttpClient) {}
 
+  deleteBook(id_book: number): Observable<Book> {
+    return this.http.delete<Book>(`${this.URL_BASE}${id_book}`);
+  }
+
+  updateBook(id_book: number, book: Book): Observable<Book> {
+    return this.http.put<Book>(`${this.URL_BASE}${id_book}`, book);
+  }
+
+  getBookByTitle(title: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.URL_BASE}q=${title}`);
+  }
+
+  getBookById(id_book: number): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.URL_BASE}${id_book}`);
+  }
+
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.URL_BASE);
   }

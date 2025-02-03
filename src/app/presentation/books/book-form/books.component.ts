@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from '../../../core/domain/books.model';
 import { CreateBookUseCase } from '../../../core/useCases/books/createBook.useCase';
 
 @Component({
-  selector: 'app-books',
+  selector: 'books-form',
   templateUrl: './books.component.html',
   styleUrl: './books.component.css',
 })
-export class BooksComponent implements OnInit {
-  book = new Book(0, 'Libro uno', '2025-02-02', 'San Pablo', 2);
+export class BooksComponent {
+  book = new Book(0, "", "", "", 0);
 
   constructor(private createBookUseCase: CreateBookUseCase) {}
 
-  ngOnInit(): void {
-    this.createBookUseCase.execute(this.book).subscribe({
+  createBook(): void {
+    const newBook = new Book(
+      0,
+      this.book.title,
+      this.book.date_publication,
+      this.book.editorial,
+      this.book.amount
+    );
+
+    this.createBookUseCase.execute(newBook).subscribe({
       next: (response) => {
         console.log(response);
       },

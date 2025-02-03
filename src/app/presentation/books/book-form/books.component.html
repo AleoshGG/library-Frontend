@@ -1,6 +1,33 @@
-<div>
-    <form>
-        <label for="">Titulo:</label>
-        <input type="text" >
-    </form>
+<div class="content-form">
+  <form>
+    <label for="title">Título:</label>
+    <input
+      type="text"
+      placeholder="Título de la obra"
+      [(ngModel)]="book.title"
+      name="title"
+    />
+    <label for="date_publication">Fecha de publicación:</label>
+    <input
+      type="date"
+      [(ngModel)]="book.date_publication"
+      name="date_publication"
+    />
+    <label for="editorial">Editorial:</label>
+    <input
+      type="text"
+      placeholder="Editorial"
+      [(ngModel)]="book.editorial"
+      name="editorial"
+    />
+    <label for="amount">Cantidad:</label>
+    <input
+      type="number"
+      placeholder="1"
+      [(ngModel)]="book.amount"
+      name="amount"
+    />
+
+    <input type="button" (click)="createBook()" value="Guardar" />
+  </form>
 </div>

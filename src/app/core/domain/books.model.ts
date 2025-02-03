@@ -1,7 +1,9 @@
-export interface IBook {
-  id_book: number;
-  title: string;
-  date_publication: string;
-  editorial: string;
-  amount: number;
+export class Book {
+  constructor(
+    public id_book: number,
+    public title: string,
+    public date_publication: string,
+    public editorial: string,
+    public amount: number
+  ) {}
 }

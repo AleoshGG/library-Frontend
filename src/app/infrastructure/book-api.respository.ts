@@ -12,6 +12,10 @@ export class BookApiRepository implements BookRepository {
 
   constructor(private http: HttpClient) {}
 
+  getAllBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.URL_BASE);
+  }
+
   createBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.URL_BASE, book);
   }

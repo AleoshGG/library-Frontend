@@ -10,8 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, PresentationModule, HttpClientModule],
-  providers: [{ provide: BookRepository, useClass: BookApiRepository }],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    PresentationModule,
+    HttpClientModule,
+  ],
+  providers: [
+    { provide: BookRepository, useClass: BookApiRepository },
+    { provide: BookRepository, useClass: BookApiRepository },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

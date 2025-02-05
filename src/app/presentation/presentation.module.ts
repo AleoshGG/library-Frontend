@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from './books/list/list.component';
 import { PageBookComponent } from './books/page-book/page-book.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { SearchComponent } from './books/search/search.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { HeaderComponent } from './shared/header/header.component';
     ListComponent,
     PageBookComponent,
     HeaderComponent,
+    SearchComponent,
   ],
   imports: [CommonModule, FormsModule],
   exports: [HeaderComponent],

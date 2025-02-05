@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../../../core/domain/books.model';
 import { CreateBookUseCase } from '../../../core/useCases/books/createBook.useCase';
+import Bell from 'bell-alert';
+import 'bell-alert/dist/bell.min.css';
 
 @Component({
   selector: 'books-form',
@@ -30,11 +32,28 @@ export class BooksComponent {
     );
 
     this.createBookUseCase.execute(newBook).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
+        const bell = new Bell(
+          {
+            title: 'Guardado',
+            description: 'El libro se guardó correctamente',
+          },
+          'success'
+        );
+        bell.launch();
+        this.closeModal();
       },
       error: (err) => {
+        const bell = new Bell(
+          {
+            title: 'Ha ocurrido un error',
+            description: 'Intentelo más tarde',
+          },
+          'error'
+        );
+        bell.launch();
         console.log(err);
+        this.closeModal();
       },
     });
   }

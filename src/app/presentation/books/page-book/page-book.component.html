@@ -19,12 +19,8 @@
     </div>
   </div>
 
-  <div class="books">
-    <card-book></card-book>
-    <card-book></card-book>
-    <card-book></card-book>
-    <card-book></card-book>
-    <card-book></card-book>
+  <div class="books" *ngFor="let book of books">
+    <card-book [book]="book"></card-book>
   </div>
 
   <back-to-top></back-to-top>

@@ -1,11 +1,18 @@
 <div class="page-content">
   <div class="menu">
     <div class="menu-left">
-      <button class="Btn">
+      <button class="Btn" (click)="openModal()">
         <div class="sign">+</div>
       </button>
       <p>Nuevo Libro</p>
     </div>
+
+    <books-form
+      [isOpen]="isModalOpen"
+      [title]="'Añadir un nuevo libro'"
+      (close)="closeModal()"
+    >
+    </books-form>
 
     <div class="menu-rigth">
       <book-search></book-search>

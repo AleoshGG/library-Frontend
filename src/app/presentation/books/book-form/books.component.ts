@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../../../core/domain/books.model';
 import { CreateBookUseCase } from '../../../core/useCases/books/createBook.useCase';
 
@@ -8,7 +8,15 @@ import { CreateBookUseCase } from '../../../core/useCases/books/createBook.useCa
   styleUrl: './books.component.css',
 })
 export class BooksComponent {
-  book = new Book(0, "", "", "", 0);
+  @Input() isOpen = false;
+  @Input() title = 'Modal';
+  @Output() close = new EventEmitter<void>();
+
+  closeModal() {
+    this.close.emit();
+  }
+
+  book = new Book(0, '', '', '', 0);
 
   constructor(private createBookUseCase: CreateBookUseCase) {}
 

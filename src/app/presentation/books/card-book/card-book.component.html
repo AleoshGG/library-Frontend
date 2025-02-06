@@ -19,13 +19,13 @@
   </div>
 
   <div class="options">
-    <button>
+    <button (click)="openModal()">
       <img
         src="https://cdn-icons-png.flaticon.com/128/3917/3917376.png"
         alt="edit"
       />
     </button>
-    <button>
+    <button (click)="delete(book.id_book)">
       <img
         src="https://cdn-icons-png.flaticon.com/128/3917/3917378.png"
         alt="delete"
@@ -33,3 +33,12 @@
     </button>
   </div>
 </div>
+
+<books-form
+  [isOpen]="isModalOpen"
+  [title]="'Editar Información'"
+  (close)="closeModal()"
+  [mode]="2"
+  [id_book]="book.id_book"
+>
+</books-form>

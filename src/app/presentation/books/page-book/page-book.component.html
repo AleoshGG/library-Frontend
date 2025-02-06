@@ -11,11 +11,12 @@
       [isOpen]="isModalOpen"
       [title]="'Añadir un nuevo libro'"
       (close)="closeModal()"
+      [mode]="1"
     >
     </books-form>
 
     <div class="menu-rigth">
-      <book-search></book-search>
+      <book-search (setBooks)="searchBook($event)"></book-search>
     </div>
   </div>
 

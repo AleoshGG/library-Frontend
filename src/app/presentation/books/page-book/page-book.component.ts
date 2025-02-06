@@ -44,4 +44,8 @@ export class PageBookComponent implements OnInit {
       },
     });
   }
+
+  searchBook(books: Book[]) {
+    this.books = books;
+  }
 }

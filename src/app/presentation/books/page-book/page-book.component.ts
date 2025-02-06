@@ -3,7 +3,7 @@ import { GetAllBooksUseCase } from '../../../core/useCases/books/getAllBooks.use
 import { Book } from '../../../core/domain/books.model';
 import Bell from 'bell-alert';
 import 'bell-alert/dist/bell.min.css';
-import { BookNotificationService } from '../notifications.service';
+import { BookNotificationService } from '../../../infrastructure/services/notifications.service';
 
 @Component({
   selector: 'app-page-book',

@@ -2,7 +2,12 @@
   border-radius: 24px;
   width: 300px;
   box-shadow: 2px 2px 10px #dca4fc;
-  margin: 30px
+  margin: 30px;
+}
+
+.card-content:hover {
+  transform: scale(0.98);
+  transition: 0.5s;
 }
 
 .img > img {

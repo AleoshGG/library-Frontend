@@ -1,5 +1,6 @@
-import { Book } from '../../domain/books.model';
-import { BookListDTO } from '../dtos/books/bookList.dto';
+import { Book } from "../../../domain/books.model";
+import { BookListDTO } from "../../dtos/books/bookList.dto";
+
 
 export class BookMapper {
   static fromDTO(dto: BookListDTO): Book[] {

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BookRepository } from '../core/repositories/book.repository';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Book } from '../core/domain/books.model';
 import { HttpClient } from '@angular/common/http';
+import { BookListDTO } from '../core/mappers/dtos/bookList.dto';
+import { BookMapper } from '../core/mappers/mappers/bookList.mapper';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +31,9 @@ export class BookApiRepository implements BookRepository {
   }
 
   getAllBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.URL_BASE);
+    return this.http
+      .get<BookListDTO>(this.URL_BASE)
+      .pipe(map(BookMapper.fromDTO));
   }
 
   createBook(book: Book): Observable<Book> {

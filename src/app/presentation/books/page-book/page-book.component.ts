@@ -3,6 +3,7 @@ import { GetAllBooksUseCase } from '../../../core/useCases/books/getAllBooks.use
 import { Book } from '../../../core/domain/books.model';
 import Bell from 'bell-alert';
 import 'bell-alert/dist/bell.min.css';
+import { BookNotificationService } from '../notifications.service';
 
 @Component({
   selector: 'app-page-book',
@@ -21,15 +22,26 @@ export class PageBookComponent implements OnInit {
   }
 
   books: Book[] = [];
+  notifications: string = '';
+  alertShown: boolean = false;
 
-  constructor(private getAllBooks: GetAllBooksUseCase) {}
-  ngOnInit(): void {
+  constructor(
+    private getAllBooks: GetAllBooksUseCase,
+    private bookNotificationService: BookNotificationService
+  ) {}
+
+  ngOnInit() {
+    //Short Polling
+    this.getBooks();
+    setInterval(() => this.getBooks(), 60000);
+    
+    this.checkForNewBooks();
+  }
+
+  getBooks() {
     this.getAllBooks.execute().subscribe({
       next: (res) => {
-        res.forEach((book) => {
-          this.books.push(book);
-        });
-        console.log(this.books);
+        this.books = res;
       },
       error: (err) => {
         const bell = new Bell(
@@ -47,5 +59,33 @@ export class PageBookComponent implements OnInit {
 
   searchBook(books: Book[]) {
     this.books = books;
+  }
+
+  checkForNewBooks(): void {
+    this.bookNotificationService.checkForNewBooks().subscribe(
+      (response) => {
+        if (response.body && response.body.notification) {
+          this.notifications = response.body.notification;
+
+          // Si no se ha mostrado la alerta antes, mostrarla ahora
+          if (!this.alertShown) {
+            alert('Cambios importantes en el stock');
+            this.alertShown = true; // Cambiar el flag a true
+          }
+        } else {
+          this.notifications = 'No hay nuevos libros.';
+          console.log(this.notifications);
+        }
+
+        // Volver a suscribirse para obtener más notificaciones
+        this.checkForNewBooks();
+      },
+      (error) => {
+        console.error('Error al verificar los libros:', error);
+        this.notifications = 'No se pudo obtener la información.';
+        // Volver a intentar después de un error
+        setTimeout(() => this.checkForNewBooks(), 5000);
+      }
+    );
   }
 }

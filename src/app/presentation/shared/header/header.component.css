@@ -1,0 +1,46 @@
+.header-content {
+  width: 100%;
+  display: flex;
+  height: 85px;
+  background: #FBFEF9;
+}
+
+.header {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.icons {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  margin-right: 5%;
+}
+
+.icons > img {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.icons > img:hover {
+  transform: scale(0.95);
+  transition: 1s;
+}
+
+hr {
+  margin: 0;
+  border: 1.2px #DCA4FC solid;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+#home {
+  margin-left: 30px;
+  width: 50px;
+}

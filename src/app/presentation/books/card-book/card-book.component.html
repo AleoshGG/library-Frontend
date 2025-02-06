@@ -1,0 +1,44 @@
+<div class="card-content">
+  <div class="img">
+    <img
+      src="https://img.freepik.com/psd-gratis/icono-pila-libros-aislado-3d-render-ilustracion_47987-15482.jpg?ga=GA1.1.1391625257.1700186293&semt=ais_hybrid_sidr"
+      alt="book"
+    />
+  </div>
+
+  <div class="info">
+    <p class="title-info">Información</p>
+    <p>Título:</p>
+    <p class="info-p">{{ book.title }}</p>
+    <p>Fecha de publicación:</p>
+    <p class="info-p">{{ book.date_publication }}</p>
+    <p>Editorial:</p>
+    <p class="info-p">{{ book.editorial }}</p>
+    <p>Cantidad:</p>
+    <p class="info-p">{{ book.amount }}</p>
+  </div>
+
+  <div class="options">
+    <button (click)="openModal()">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/3917/3917376.png"
+        alt="edit"
+      />
+    </button>
+    <button (click)="delete(book.id_book)">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/3917/3917378.png"
+        alt="delete"
+      />
+    </button>
+  </div>
+</div>
+
+<books-form
+  [isOpen]="isModalOpen"
+  [title]="'Editar Información'"
+  (close)="closeModal()"
+  [mode]="2"
+  [id_book]="book.id_book"
+>
+</books-form>

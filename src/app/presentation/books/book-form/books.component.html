@@ -1,0 +1,48 @@
+<div class="modal-backdrop" *ngIf="isOpen">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>{{ title }}</h3>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label for="title">Título:</label> <br />
+        <input
+          type="text"
+          placeholder="Título de la obra"
+          [(ngModel)]="book.title"
+          name="title"
+        />
+        <br />
+        <label for="date_publication">Fecha de publicación:</label> <br />
+        <input
+          type="date"
+          [(ngModel)]="book.date_publication"
+          name="date_publication"
+        />
+        <br />
+        <label for="editorial">Editorial:</label> <br />
+        <input
+          type="text"
+          placeholder="Editorial"
+          [(ngModel)]="book.editorial"
+          name="editorial"
+        />
+        <br />
+        <label for="amount">Cantidad:</label> <br />
+        <input
+          type="number"
+          placeholder="1"
+          [(ngModel)]="book.amount"
+          name="amount"
+        />
+        <br />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <input id="btn-s" type="button" (click)="action()" value="Guardar" />
+      <button (click)="closeModal()" class="close">Cerrar</button>
+    </div>
+  </div>
+</div>
+

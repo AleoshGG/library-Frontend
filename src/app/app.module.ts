@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PresentationModule } from './presentation/presentation.module';
 import { BookRepository } from './core/repositories/book.repository';
-import { BookApiRepository } from './infrastructure/book-api.respository';
+import { BookApiRepository } from './infrastructure/api-repository/book-api.respository';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

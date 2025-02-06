@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BookRepository } from '../core/repositories/book.repository';
+import { BookRepository } from '../../core/repositories/book.repository';
 import { map, Observable } from 'rxjs';
-import { Book } from '../core/domain/books.model';
+import { Book } from '../../core/domain/books.model';
 import { HttpClient } from '@angular/common/http';
-import { BookListDTO } from '../core/mappers/dtos/bookList.dto';
-import { BookMapper } from '../core/mappers/mappers/bookList.mapper';
+import { BookListDTO } from '../../core/adapters/dtos/books/bookList.dto';
+import { BookMapper } from '../../core/adapters/mappers/books/bookList.mapper';
 
 @Injectable({
   providedIn: 'root',

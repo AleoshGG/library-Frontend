@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ReaderRepository } from '../core/repositories/reader.repository';
 import { Observable } from 'rxjs';
-import { Reader } from '../core/domain/reader.model';
 import { HttpClient } from '@angular/common/http';
+import { ReaderRepository } from '../../core/repositories/reader.repository';
+import { Reader } from '../../core/domain/reader.model';
 
 @Injectable({
   providedIn: 'root',

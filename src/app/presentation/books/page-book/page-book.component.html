@@ -1,0 +1,28 @@
+<div class="page-content">
+  <div class="menu">
+    <div class="menu-left">
+      <button class="Btn" (click)="openModal()">
+        <div class="sign">+</div>
+      </button>
+      <p>Nuevo Libro</p>
+    </div>
+
+    <books-form
+      [isOpen]="isModalOpen"
+      [title]="'Añadir un nuevo libro'"
+      (close)="closeModal()"
+      [mode]="1"
+    >
+    </books-form>
+
+    <div class="menu-rigth">
+      <book-search (setBooks)="searchBook($event)"></book-search>
+    </div>
+  </div>
+
+  <div class="books">
+    <card-book *ngFor="let book of books" [book]="book"></card-book>
+  </div>
+
+  <back-to-top></back-to-top>
+</div>

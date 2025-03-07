@@ -1,0 +1,39 @@
+<div class="modal-backdrop" *ngIf="isOpen">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>{{ title }}</h3>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label for="first_name">Nombres:</label> <br />
+        <input
+          type="text"
+          placeholder="Nombres"
+          
+          name="first_name"
+        />
+        <br />
+        <label for="last_name">Apellidos:</label> <br />
+        <input
+          type="text"
+          placeholder="Apellidos"
+          name="last_name"
+        />
+        <br />
+        <label for="email">Correo Electrónico:</label> <br />
+        <input
+          type="email"
+          placeholder="Correo Electrónico"
+          
+          name="email"
+        />
+        <br />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <input id="btn-s" type="button"  value="Guardar" />
+      <button (click)="closeModal()" class="close">Cerrar</button>
+    </div>
+  </div>
+</div>

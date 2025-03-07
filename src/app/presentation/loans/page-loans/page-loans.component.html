@@ -1,0 +1,24 @@
+<div class="page">
+  <div class="menu">
+    <div class="menu-left">
+      <button class="Btn" (click)="openModal()">
+        <div class="sign">+</div>
+      </button>
+      <p>Nuevo Lector</p>
+    </div>
+
+    <reader-form
+      [isOpen]="isModalOpen"
+      [title]="'Añadir nuevo lector'"
+      (close)="closeModal()"
+    >
+    </reader-form>
+  </div>
+
+  <search-reader></search-reader>
+  <search-book></search-book>
+  <br><br>
+  <h1>Tabla de préstamos</h1>
+  <table-loans></table-loans>
+  <back-to-top></back-to-top>
+</div>

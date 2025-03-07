@@ -1,0 +1,14 @@
+<div
+  class="card"
+  [ngClass]="{
+    active: accountStatus === 'active',
+    suspended: accountStatus === 'suspended'
+  }"
+>
+  <h2>{{ userName }}</h2>
+  <p>
+    Estado de la cuenta:
+    <strong>{{ accountStatus === "active" ? "Activa" : "Suspendida" }}</strong>
+  </p>
+  <button [disabled]="accountStatus !== 'active'">Prestar</button>
+</div>

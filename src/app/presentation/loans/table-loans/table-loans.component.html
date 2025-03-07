@@ -1,0 +1,30 @@
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Estado</th>
+        <th>Libro Prestado</th>
+        <th>Fecha de Devolución</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.firstName }}</td>
+        <td>{{ account.lastName }}</td>
+        <td>
+          <span
+            class="status-circle"
+            [ngClass]="{
+              active: account.status === 'active',
+              suspended: account.status === 'suspended'
+            }"
+          ></span>
+        </td>
+        <td>{{ account.borrowedBook }}</td>
+        <td>{{ account.returnDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

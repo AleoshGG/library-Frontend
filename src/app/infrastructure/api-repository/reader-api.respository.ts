@@ -13,14 +13,19 @@ export class ReaderApiRepository implements ReaderRepository {
   private URL_BASE = 'http://localhost:8000/readers/';
 
   constructor(private http: HttpClient) {}
+  getReaderById(id_reader: number): Observable<Reader[]> {
+    return this.http
+      .get<ReaderListDTO>(`${this.URL_BASE}${id_reader}`)
+      .pipe(map(ReaderMapper.fromDTO));
+  }
 
   createReader(reader: Reader): Observable<Reader> {
     return this.http.post<Reader>(this.URL_BASE, reader);
   }
   getReaderByName(name: string): Observable<Reader[]> {
     return this.http
-          .get<ReaderListDTO>(`${this.URL_BASE}q=${name}`)
-          .pipe(map(ReaderMapper.fromDTO));
+      .get<ReaderListDTO>(`${this.URL_BASE}q=${name}`)
+      .pipe(map(ReaderMapper.fromDTO));
   }
   getAllReaders(): Observable<Reader[]> {
     return this.http.get<Reader[]>(this.URL_BASE);

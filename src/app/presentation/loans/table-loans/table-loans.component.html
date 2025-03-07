@@ -10,20 +10,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let account of accounts">
-        <td>{{ account.firstName }}</td>
-        <td>{{ account.lastName }}</td>
+      <tr *ngFor="let p of presentation">
+        <td>{{ p.first_name }}</td>
+        <td>{{ p.last_name }}</td>
         <td>
           <span
             class="status-circle"
             [ngClass]="{
-              active: account.status === 'active',
-              suspended: account.status === 'suspended'
+              active: p.account_status === 'active',
+              suspended: p.account_status === 'suspended'
             }"
           ></span>
         </td>
-        <td>{{ account.borrowedBook }}</td>
-        <td>{{ account.returnDate }}</td>
+        <td>{{ p.title }}</td>
+        <td>{{ p.return_date }}</td>
       </tr>
     </tbody>
   </table>

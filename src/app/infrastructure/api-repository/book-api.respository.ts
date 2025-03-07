@@ -29,7 +29,9 @@ export class BookApiRepository implements BookRepository {
   }
 
   getBookById(id_book: number): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.URL_BASE}${id_book}`);
+    return this.http
+      .get<BookListDTO>(`${this.URL_BASE}${id_book}`)
+      .pipe(map(BookMapper.fromDTO));
   }
 
   getAllBooks(): Observable<Book[]> {

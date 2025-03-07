@@ -18,6 +18,7 @@ import { SearchBookComponent } from './loans/search-book/search-book.component';
 import { SearchBookIntputComponent } from './loans/search-book-intput/search-book-intput.component';
 import { TargetStatusBComponent } from './loans/target-status-b/target-status-b.component';
 import { TableLoansComponent } from './loans/table-loans/table-loans.component';
+import { PageReturnsComponent } from './returns/page-returns/page-returns.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TableLoansComponent } from './loans/table-loans/table-loans.component';
     SearchBookComponent,
     SearchBookIntputComponent,
     TargetStatusBComponent,
-    TableLoansComponent
+    TableLoansComponent,
+    PageReturnsComponent
   ],
   imports: [CommonModule, FormsModule, RouterModule],
   exports: [HeaderComponent, MenuComponent],

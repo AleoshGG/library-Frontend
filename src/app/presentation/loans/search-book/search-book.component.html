@@ -3,6 +3,7 @@
   <div class="info">
     <search-book-intput (setBooks)="setBook($event)" />
     <target-status-b
+      [msg]="msg"
       [id_reader]="id_reader"
       [id_book]="book.id_book"
       [userName]="book.title"

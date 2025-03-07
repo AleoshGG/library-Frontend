@@ -9,6 +9,7 @@ import { Book } from '../../../core/domain/books.model';
 export class SearchBookComponent {
   @Input() book!: Book;
   @Input() id_reader!: number;
+  @Input() msg!: string;
   @Output() setBookPage = new EventEmitter<Book>();
 
   status: string = 'suspended';
@@ -19,9 +20,13 @@ export class SearchBookComponent {
     this.book.editorial = book.editorial;
     this.book.date_publication = this.book.date_publication;
     this.book.amount = this.book.amount;
-    if (book.amount != 0) {
-      this.status = 'active';
+
+    if (this.msg == 'Prestar') {
+      if (book.amount != 0) {
+        this.status = 'active';
+      }
     }
+
     this.setBookPage.emit(this.book);
   }
 }

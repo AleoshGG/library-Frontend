@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './target-statuss.component.css',
 })
 export class TargetStatussComponent {
+  @Input() msg!: string
   @Input() userName: string = 'Usuario';
   @Input() accountStatus: string = 'active';
   @Output() activeSearchBook = new EventEmitter<boolean>();

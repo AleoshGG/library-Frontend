@@ -26,7 +26,7 @@ export class LoanApiRepository implements LoanRepository {
 
   deleteLoan(id_reader: number, id_book: number): Observable<Loan> {
     return this.http.delete<Loan>(
-      `${this.URL_BASE}/?id_reader=${id_reader}&id_book=${id_book}`
+      `${this.URL_BASE}?id_reader=${id_reader}&id_book=${id_book}`
     );
   }
 }

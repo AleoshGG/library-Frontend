@@ -10,5 +10,5 @@
     Estado de la cuenta:
     <strong>{{ accountStatus === "active" ? "Activa" : "Suspendida" }}</strong>
   </p>
-  <button [disabled]="accountStatus !== 'active'" (click)="active()">Prestar</button>
+  <button [disabled]="accountStatus !== 'active'" (click)="active()">{{msg}}</button>
 </div>

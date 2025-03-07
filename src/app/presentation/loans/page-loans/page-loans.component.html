@@ -20,6 +20,7 @@
     [bookS]="bookS"
     (setBookSPage)="setBookS($event)"
     (setReaderPage)="setReader($event)"
+    [msg]="'Prestar'"
   ></search-reader>
 
   <search-book
@@ -27,6 +28,7 @@
     [book]="book"
     [id_reader]="reader.id_reader"
     (setBookPage)="setBook($event)"
+    [msg]="'Prestar'"
   ></search-book>
 
   <br /><br />

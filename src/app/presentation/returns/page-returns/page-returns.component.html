@@ -1,6 +1,18 @@
 <div class="page">
-  <search-reader></search-reader>
-  <search-book></search-book>
+  <search-reader
+    [reader]="reader"
+    [bookS]="bookS"
+    (setBookSPage)="setBookS($event)"
+    (setReaderPage)="setReader($event)"
+    [msg]="'Devolver'"
+  ></search-reader>
+  <search-book
+    *ngIf="bookS"
+    [book]="book"
+    [id_reader]="reader.id_reader"
+    (setBookPage)="setBook($event)"
+    [msg]="'Devolver'"
+  ></search-book>
   <br /><br />
 
   <back-to-top></back-to-top>

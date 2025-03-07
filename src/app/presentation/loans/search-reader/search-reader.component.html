@@ -3,6 +3,7 @@
   <div class="info">
     <search-reader-intput (setReader)="setReader($event)" />
     <target-statuss
+      [msg]="msg"
       (activeSearchBook)="setBookS($event)"
       [userName]="reader.first_name + ' ' + reader.last_name"
       [accountStatus]="reader.account_status"

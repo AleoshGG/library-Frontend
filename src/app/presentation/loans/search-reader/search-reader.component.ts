@@ -14,6 +14,7 @@ import { Reader } from '../../../core/domain/reader.model';
   styleUrl: './search-reader.component.css',
 })
 export class SearchReaderComponent {
+  @Input() msg!: string
   @Input() reader!: Reader;
   @Input() bookS!: boolean;
   @Output() setReaderPage = new EventEmitter<Reader>();

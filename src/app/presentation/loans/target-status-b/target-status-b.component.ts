@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DeleteLoanUseCase } from '../../../core/useCases/loans/deleteLoan.useCase';
 import { Loan } from '../../../core/domain/loan.model';
 import Bell from 'bell-alert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'target-status-b',

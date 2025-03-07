@@ -33,7 +33,7 @@ export class PageBookComponent implements OnInit {
   ngOnInit() {
     //Short Polling
     this.getBooks();
-    //setInterval(() => this.getBooks(), 60000);
+    setInterval(() => this.getBooks(), 50000);
     
     //this.checkForNewBooks();
   }

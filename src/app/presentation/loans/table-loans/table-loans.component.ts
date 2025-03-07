@@ -34,6 +34,23 @@ export class TableLoansComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fetchBook();
+    setInterval(() => this.fetchBook, 20000);
+  }
+
+  private showErrorAlert(error: any): void {
+    const bell = new Bell(
+      {
+        title: 'Ha ocurrido un error al actualizar los datos',
+        description: 'Intentelo más tarde',
+      },
+      'error'
+    );
+    bell.launch();
+    console.error(error);
+  }
+
+  fetchBook() {
     this.getAllLoansUseCase.execute().subscribe({
       next: (loans) => {
         this.loans = loans;
@@ -41,8 +58,14 @@ export class TableLoansComponent implements OnInit {
 
         // Obtener los datos de los lectores y libros en paralelo
         forkJoin({
-          readers: forkJoin(loans.map((loan) => this.getReaderByIdUseCase.execute(loan.id_reader))),
-          books: forkJoin(loans.map((loan) => this.getBookByIdUseCase.execute(loan.id_book))),
+          readers: forkJoin(
+            loans.map((loan) =>
+              this.getReaderByIdUseCase.execute(loan.id_reader)
+            )
+          ),
+          books: forkJoin(
+            loans.map((loan) => this.getBookByIdUseCase.execute(loan.id_book))
+          ),
         }).subscribe({
           next: ({ readers, books }) => {
             // Corregimos la estructura de datos usando flat()
@@ -63,17 +86,5 @@ export class TableLoansComponent implements OnInit {
       },
       error: (err) => this.showErrorAlert(err),
     });
-  }
-
-  private showErrorAlert(error: any): void {
-    const bell = new Bell(
-      {
-        title: 'Ha ocurrido un error al actualizar los datos',
-        description: 'Intentelo más tarde',
-      },
-      'error'
-    );
-    bell.launch();
-    console.error(error);
   }
 }

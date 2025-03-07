@@ -1,0 +1,19 @@
+<div class="modal-backdrop" *ngIf="isOpen">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>{{ title }}</h3>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label for="return_date">Fecha de devolución:</label> <br />
+        <input type="date" [(ngModel)]="return_date" name="return_date" />
+        <br />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <input id="btn-s" type="button" value="Guardar" (click)="saveLoan()" />
+      <button (click)="closeModal()" class="close">Cerrar</button>
+    </div>
+  </div>
+</div>

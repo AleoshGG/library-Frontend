@@ -10,7 +10,7 @@
         <input
           type="text"
           placeholder="Nombres"
-          
+          [(ngModel)]="reader.first_name"
           name="first_name"
         />
         <br />
@@ -18,6 +18,7 @@
         <input
           type="text"
           placeholder="Apellidos"
+          [(ngModel)]="reader.last_name"
           name="last_name"
         />
         <br />
@@ -25,14 +26,14 @@
         <input
           type="email"
           placeholder="Correo Electrónico"
-          
+          [(ngModel)]="reader.email"
           name="email"
         />
         <br />
       </form>
     </div>
     <div class="modal-footer">
-      <input id="btn-s" type="button"  value="Guardar" />
+      <input id="btn-s" type="button" value="Guardar" (click)="save()"/>
       <button (click)="closeModal()" class="close">Cerrar</button>
     </div>
   </div>

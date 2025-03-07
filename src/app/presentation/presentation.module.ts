@@ -19,6 +19,7 @@ import { SearchBookIntputComponent } from './loans/search-book-intput/search-boo
 import { TargetStatusBComponent } from './loans/target-status-b/target-status-b.component';
 import { TableLoansComponent } from './loans/table-loans/table-loans.component';
 import { PageReturnsComponent } from './returns/page-returns/page-returns.component';
+import { ReturnDateComponent } from './loans/return-date/return-date.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PageReturnsComponent } from './returns/page-returns/page-returns.compon
     SearchBookIntputComponent,
     TargetStatusBComponent,
     TableLoansComponent,
-    PageReturnsComponent
+    PageReturnsComponent,
+    ReturnDateComponent
   ],
   imports: [CommonModule, FormsModule, RouterModule],
   exports: [HeaderComponent, MenuComponent],

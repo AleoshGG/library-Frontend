@@ -15,9 +15,21 @@
     </reader-form>
   </div>
 
-  <search-reader></search-reader>
-  <search-book></search-book>
-  <br><br>
+  <search-reader
+    [reader]="reader"
+    [bookS]="bookS"
+    (setBookSPage)="setBookS($event)"
+    (setReaderPage)="setReader($event)"
+  ></search-reader>
+
+  <search-book
+    *ngIf="bookS"
+    [book]="book"
+    [id_reader]="reader.id_reader"
+    (setBookPage)="setBook($event)"
+  ></search-book>
+
+  <br /><br />
   <h1>Tabla de préstamos</h1>
   <table-loans></table-loans>
   <back-to-top></back-to-top>

@@ -1,10 +1,12 @@
 <div class="contend">
   <h1>Buscar el Libro</h1>
   <div class="info">
-    <search-book-intput />
-    <target-statuss
-      [userName]="'María Gómez'"
-      [accountStatus]="'active'"
-    ></target-statuss>
+    <search-book-intput (setBooks)="setBook($event)" />
+    <target-status-b
+      [id_reader]="id_reader"
+      [id_book]="book.id_book"
+      [userName]="book.title"
+      [accountStatus]="status"
+    ></target-status-b>
   </div>
 </div>

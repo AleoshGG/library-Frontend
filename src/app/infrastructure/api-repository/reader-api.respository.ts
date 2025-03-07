@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ReaderRepository } from '../../core/repositories/reader.repository';
 import { Reader } from '../../core/domain/reader.model';
+import { ReaderListDTO } from '../../core/adapters/dtos/readers/readerList.dto';
+import { ReaderMapper } from '../../core/adapters/mappers/readers/readerList.mappers';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReaderApiRepository implements ReaderRepository {
-  private URL_BASE = 'http://localhost:8080/readers/';
+  private URL_BASE = 'http://localhost:8000/readers/';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +18,9 @@ export class ReaderApiRepository implements ReaderRepository {
     return this.http.post<Reader>(this.URL_BASE, reader);
   }
   getReaderByName(name: string): Observable<Reader[]> {
-    return this.http.get<Reader[]>(`${this.URL_BASE}q=${name}`);
+    return this.http
+          .get<ReaderListDTO>(`${this.URL_BASE}q=${name}`)
+          .pipe(map(ReaderMapper.fromDTO));
   }
   getAllReaders(): Observable<Reader[]> {
     return this.http.get<Reader[]>(this.URL_BASE);

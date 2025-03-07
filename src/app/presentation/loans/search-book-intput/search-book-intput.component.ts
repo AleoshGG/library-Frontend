@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Book } from '../../../core/domain/books.model';
+import { GetBookByTitleUseCase } from '../../../core/useCases/books/getBookByTitle.useCase';
+import Bell from 'bell-alert';
 
 @Component({
   selector: 'search-book-intput',
@@ -6,9 +9,28 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './search-book-intput.component.css',
 })
 export class SearchBookIntputComponent {
-  @Output() setBooks = new EventEmitter<void>();
+  @Output() setBooks = new EventEmitter<Book>();
 
   title = '';
 
-  constructor() {}
+  constructor(private getBookByTitleUseCase: GetBookByTitleUseCase) {}
+
+  search() {
+    this.getBookByTitleUseCase.execute(this.title).subscribe({
+      next: (book) => {
+        this.setBooks.emit(book[0]);
+      },
+      error: (err) => {
+        const bell = new Bell(
+          {
+            title: 'Ha ocurrido un error',
+            description: 'Intentelo más tarde',
+          },
+          'error'
+        );
+        bell.launch();
+        console.log(err);
+      },
+    });
+  }
 }

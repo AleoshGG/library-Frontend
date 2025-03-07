@@ -7,8 +7,19 @@
 >
   <h2>{{ userName }}</h2>
   <p>
-    Estado de la cuenta:
-    <strong>{{ accountStatus === "active" ? "Activa" : "Suspendida" }}</strong>
+    Inventario:
+    <strong>{{
+      accountStatus === "active" ? "Disponible" : "No disponible"
+    }}</strong>
   </p>
-  <button [disabled]="accountStatus !== 'active'">Prestar</button>
+  <button (click)="openModal()" [disabled]="accountStatus !== 'active'">
+    Prestar
+  </button>
 </div>
+<return-date
+  (close)="closeModal()"
+  [id_book]="id_book"
+  [id_reader]="id_reader"
+  [title]="'Fecha de devolución del libro'"
+  [isOpen]="isModalOpen"
+></return-date>

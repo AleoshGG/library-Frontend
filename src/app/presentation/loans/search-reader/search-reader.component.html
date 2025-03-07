@@ -1,10 +1,11 @@
 <div class="contend">
   <h1>Buscar al Lector</h1>
   <div class="info">
-    <search-reader-intput />
+    <search-reader-intput (setReader)="setReader($event)" />
     <target-statuss
-      [userName]="'María Gómez'"
-      [accountStatus]="'active'"
+      (activeSearchBook)="setBookS($event)"
+      [userName]="reader.first_name + ' ' + reader.last_name"
+      [accountStatus]="reader.account_status"
     ></target-statuss>
   </div>
 </div>

@@ -10,7 +10,7 @@ import { LoanMapper } from '../../core/adapters/mappers/loans/loanList.mapper';
   providedIn: 'root',
 })
 export class LoanApiRepository implements LoanRepository {
-  private URL_BASE = 'http://localhost:8000/loans/';
+  private URL_BASE = 'http://100.26.65.193/loans/';
 
   constructor(private http: HttpClient) {}
 

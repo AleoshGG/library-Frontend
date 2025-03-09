@@ -10,7 +10,7 @@ import { ReaderMapper } from '../../core/adapters/mappers/readers/readerList.map
   providedIn: 'root',
 })
 export class ReaderApiRepository implements ReaderRepository {
-  private URL_BASE = 'http://localhost:8000/readers/';
+  private URL_BASE = 'http://100.26.65.193/readers/';
 
   constructor(private http: HttpClient) {}
   getReaderById(id_reader: number): Observable<Reader[]> {

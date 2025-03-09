@@ -10,7 +10,7 @@ import { BookMapper } from '../../core/adapters/mappers/books/bookList.mapper';
   providedIn: 'root',
 })
 export class BookApiRepository implements BookRepository {
-  private URL_BASE = 'http://localhost:8080/books/';
+  private URL_BASE = 'http://54.159.73.69/books/';
 
   constructor(private http: HttpClient) {}
 
